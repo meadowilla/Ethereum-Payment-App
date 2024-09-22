@@ -184,30 +184,6 @@ async function getLastActive(user) {
 // The person you owe money is passed as 'creditor'
 // The amount you owe them is passed as 'amount'
 async function add_IOU(creditor, amount) {
-  const users = await getUsers();
-  if (users.length == 0){
-    users.push(defaultAccount);
-    users.push(creditor);
-  } else {
-    var flag1 = false;
-    var flag2 = false;
-
-    for(var i=0; i<users.length; i++){
-      if (users[i] == defaultAccount){
-        flag1 = true;
-      }
-      if (users[i] == creditor){
-        flag2 = true;
-      }
-    }
-    if (flag1 == false){
-      users.push(defaultAccount);
-    }
-    if(flag2 == false){
-      users.push(creditor);
-    }
-  }
-
   var directPath = await doBFS(defaultAccount, creditor, getNeighbors);
   var indirectPath = await doBFS(creditor, defaultAccount, getNeighbors);
   if (directPath == null){
