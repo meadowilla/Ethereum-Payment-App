@@ -9,8 +9,6 @@ contract Splitwise {
 // DO NOT MODIFY ABOVE THIS
 
 // ADD YOUR CONTRACT CODE BELOW
-    event AddNewUser(address user);
-    event UpdateIOU(address debtor, address creditor, uint32 amount);
     event AddNewIOU(address debtor, address creditor, uint32 amount);
 
     mapping (address => mapping(address =>  uint32)) private IOUAmount;
